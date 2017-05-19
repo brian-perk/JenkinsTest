@@ -5,9 +5,6 @@ pipeline {
     stages {
         stages ('Checkout') {
 
-            checkout scm
-            stash 'everything'
-
             }
 
         stage('Deploy') {
