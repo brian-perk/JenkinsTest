@@ -7,7 +7,9 @@ pipeline {
             steps { 
                 echo 'Deploying....'
                 sshagent (credentials: ['jenkins']) {
-                    sh 'ssh -o StrictHostKeyChecking=no -l jenkins 192.168.0.28 uname -a'
+                    sh 'now=$(date +%m%d%Y%H%M)'
+                    sh 'ssh -o StrictHostKeyChecking=no jenkins@192.168.0.28 mkdir /var/www/vhosts/test/releases/$(now)'
+                    sh 'scp -ro StrictHostKeyChecking=no * jenkins@192.168.0.28:/var/www/vhosts/test/releases/$(now)'
                 }
             }
         }
