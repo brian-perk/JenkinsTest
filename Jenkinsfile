@@ -1,12 +1,24 @@
 #!groovy
 pipeline {
-    agent any 
+    agent any
+
     stages {
-        stage('Test') {
+        stages ('Checkout') {
+
+            checkout scm
+            stash 'everything'
+
+            }
+
+        stage('Deploy') {
             steps {
-                    echo "Hello World"
+                echo 'Deploying....'
+                sshagent (credentials: ['jenkins']) {
+                    sh 'ssh -0 StrictHostChecking=no -l jenkins 192.168.0.28 uname -a'
+                }
+
+                scp 
             }
         }
     }
 }
-
