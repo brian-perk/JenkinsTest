@@ -9,7 +9,7 @@ pipeline {
     stages { 
         stage('Info') {
             steps {
-                echo "Release: " now
+                sh 'echo Release Number: $now'
             }
         }
         stage('Deploy') {
