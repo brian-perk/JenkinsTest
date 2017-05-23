@@ -9,7 +9,6 @@ pipeline {
     stages { 
         stage('Deploy') {
             steps { 
-                echo 'Deploying....'
                 parallel (
                     "agent1" : {
                         steps {
