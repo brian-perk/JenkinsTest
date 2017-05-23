@@ -2,8 +2,6 @@
 pipeline {
     agent any
 
-    env.now = $(date +%m%d%Y%H%M)
-
     stages { 
         stage('Deploy') {
             steps { 
