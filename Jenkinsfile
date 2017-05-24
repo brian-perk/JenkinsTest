@@ -11,13 +11,11 @@ pipeline {
             steps {
                 sh 'echo Release Number: $now'
             }
-
+        }
         stage('Add config file') {
             steps {
                 configFileProvider([configFile(fileId: '10b17903-85a0-43e9-a877-c18defe61a55', targetLocation: '.env', variable: 'combre.env')])
             }
-        }
-
         }
         stage('Deploy') {
             steps { 
